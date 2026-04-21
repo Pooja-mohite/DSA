@@ -5,6 +5,8 @@
 #         self.next = next
 class Solution(object):
     def reverseList(self, head):
+        #Brute force
+        """
         values = []
         temp = head
         while temp:
@@ -18,6 +20,16 @@ class Solution(object):
             i = i+1
             temp = temp.next
         return head
+        """
+        #Optimized
+        prev = None
+        current = head
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        return prev
 
      
         
