@@ -6,7 +6,7 @@
 class Solution(object):
     def removeNthFromEnd(self, head, n):
         # brute force
-        print("head =", head.val if head else None) 
+         
         length = 0
         temp = head
         while temp:
