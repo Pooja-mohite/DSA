@@ -5,7 +5,9 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
+    """
     def isSubtree(self, root, subRoot):
+        
         if root is None:
             return False
         if self.isSametree(root, subRoot):
@@ -21,5 +23,16 @@ class Solution(object):
         if p.val != q.val:
             return False
         return self.isSametree(p.left, q.left) and self.isSametree(p.right, q.right)
+        """
+    def serialize(self, root):
+        if root is None:
+            return 'null,'
+        return "#" + str(root.val) + "," + \
+            self.serialize(root.left) + \
+            self.serialize(root.right)
+    def isSubtree(self, root, subRoot):
+        root_string = self.serialize(root)
+        subRoot_string = self.serialize(subRoot)
+        return subRoot_string in root_string
 
            
