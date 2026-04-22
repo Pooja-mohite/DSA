@@ -2,7 +2,7 @@
 
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
-        
+        """
         pathofp = []
         pathofq = []
         self.findPath(root, p, pathofp)
@@ -29,8 +29,14 @@ class Solution(object):
             return True
         path.pop()
         return False
-        
-
+        """
+        while root:
+            if p.val < root.val and q.val < root.val:
+                root = root.left
+            elif p.val > root.val and q.val > root.val:
+                root = root.right
+            else:
+                return root
 
 
 
