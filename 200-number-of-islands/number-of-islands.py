@@ -1,25 +1,31 @@
 class Solution(object):
     def numIslands(self, grid):
-        if not grid:
-            return 0
         rows = len(grid)
         cols = len(grid[0])
-        num_islands = 0
-        def dfs(r, c):
-            if r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] == '0':
-                return 
-            grid[r][c] = '0'
-            dfs(r + 1, c)
-            dfs(r - 1, c)
-            dfs(r, c + 1)
-            dfs(r, c - 1)
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] == '1':
-                    num_islands += 1
-                    dfs(r, c)
-        return num_islands
-                                                        
 
-        
+        def dfs(i, j):
+            #boundary check
+            if i < 0 or j < 0 or i >= rows or j >= cols:
+                return
+
+            if grid[i][j] == "0":
+                return
+
+            #mark visited
+            grid[i][j] = "0"
+
+            #visit all 4 directions
+            dfs(i+1, j)
+            dfs(i-1, j)
+            dfs(i, j+1)
+            dfs(i, j-1)
+
+        count = 0
+
+        for i in range(rows):
+            for j in range(cols):
+                if grid[i][j] == "1":
+                    dfs(i, j)
+                    count = count + 1
+        return count
         
