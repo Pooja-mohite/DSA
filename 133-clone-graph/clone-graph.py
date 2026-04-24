@@ -8,17 +8,34 @@ class Node(object):
 
 class Solution(object):
     def cloneGraph(self, node):
+        """
         if not node:
             return None
-        old_to_new = {}
-        def dfs(curr_node):
-            if curr_node in old_to_new:
-                return old_to_new[curr_node]
-            copy = Node(curr_node.val)
-            old_to_new[curr_node] = copy
-            for neighbor in curr_node.neighbors:
-                copy.neighbors.append(dfs(neighbor))
-            return copy
-        return dfs(node)
 
-        
+        def dfs(oldnode):
+            #create new node
+            newnode = Node(oldnode.val)
+
+            #copy connections
+            for neighb in oldnode.neighbors:
+                newnode.neighbors.append(dfs(neighb))
+            return newnode
+        return dfs(node) 
+        """
+        if node is None:
+            return None
+
+        visited = {}
+
+        def dfs(oldnode):
+            if oldnode in visited:
+                return visited[oldnode]
+
+            newnode = Node(oldnode.val)
+            visited[oldnode] = newnode
+
+            for neighbor in oldnode.neighbors:
+                newnode.neighbors.append(dfs(neighbor))
+
+            return newnode
+        return dfs(node)
