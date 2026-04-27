@@ -26,7 +26,7 @@ class Solution(object):
                     dp[i] = True
             
                 
-        return dp[False]
+        return dp[0]
 
 
 
