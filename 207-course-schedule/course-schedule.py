@@ -5,89 +5,71 @@ class Solution(object):
         :type prerequisites: List[List[int]]
         :rtype: bool
         """
-        #brute force
         """
-        # create graph
+        #brute force
         graph = {}
 
         for i in range(numCourses):
             graph[i] = []
-
-        for pair in prerequisites:
-            course = pair[0]
-            pre = pair[1]
+        for coursepair in prerequisites:
+            course = coursepair[0]
+            pre = coursepair[1]
             graph[course].append(pre)
-
         def dfs(course, visiting):
-
             if course in visiting:
                 return False
-            
-            #mark visiting
             visiting.add(course)
-            #check all prerequisites
+
             for pre in graph[course]:
-                result = dfs(pre, visiting)
-
-                if result == False:
+                isprecomplete = dfs(pre, visiting)
+                if isprecomplete == False:
                     return False
-
-            #remove from visiting
             visiting.remove(course)
-
             return True
-        
         for i in range(numCourses):
             visiting = set()
-
             if dfs(i, visiting) == False:
                 return False
-
         return True
         """
-        #optimized
-        #create graph
+        # optimized
         graph = {}
-
         for i in range(numCourses):
             graph[i] = []
-
-        for pair in prerequisites:
-            course = pair[0]
-            pre = pair[1]
+        for coursepair in prerequisites:
+            course = coursepair[0]
+            pre = coursepair[1]
             graph[course].append(pre)
-
-            #state array
-            state = [0] * numCourses
-
-            def dfs(course):
-                #if visiting -> cycle
-                if state[course] == 1:
-                    return False
-
-                #if already visited
-                if state[course] == 2:
-                    return True
-
-                #mark visiting
-                state[course] = 1
-
-                #check all prerequisites
-                for pre in  graph[course]:
-
-                    if dfs(pre) == False:
-                        return False
-
-                #mark visited(safe)
-                state[course] = 2
+        statearray = [0] * numCourses
+        def dfs(course):
+            if statearray[course] == 1:
+                return False
+            if statearray[course] == 2:
                 return True
-
-            for i in range(numCourses):
-                if dfs(i) == False:
+            statearray[course] = 1
+            for pre in graph[course]:
+                if dfs(pre) == False:
                     return False
-
-        #no cycle
+            statearray[course] =2
+            return True
+        for i in range(numCourses):
+            if dfs(i) == False:
+                return False
         return True
 
 
+
+
+
+
+                
+
+
+            
+
         
+
+                  
+
+
+       
