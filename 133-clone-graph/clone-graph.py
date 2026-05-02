@@ -23,18 +23,22 @@ class Solution(object):
         return dfs(node) 
         """
         #optimized
-        
         visited = {}
         if node is None:
             return None
         def dfs(oldnode):
             if oldnode in visited:
                 return visited[oldnode]
-            new_node = Node(oldnode.val)
-            visited[oldnode] = new_node
-            for neighbor in oldnode.neighbors:
-                new_node.neighbors.append(dfs(neighbor))
-            return new_node
-        return dfs(node)
-            
+            else:
+                new_node = Node(oldnode.val)
+                visited[oldnode]= new_node
 
+                for neighbor in oldnode.neighbors:
+                    new_node.neighbors.append(dfs(neighbor))
+                return new_node
+        return dfs(node)
+
+                
+
+        
+        
