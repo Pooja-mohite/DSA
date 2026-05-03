@@ -1,23 +1,19 @@
 class Solution(object):
     def combinationSum(self, candidates, target):
         result = []
-        def dfs(start, path, total):
-            if total == target:
+        def dfs(start, path, sum):
+            if sum == target:
                 result.append(path[:])
                 return
-            if total > target:
+            if sum > target:
                 return
             i = start
             while i < len(candidates):
-                num = candidates[i]
-                #choose
-                path.append(num)
-                #explore
-                dfs(i, path, total + num)
-                #backtrack
+                curr_num = candidates[i]
+                path.append(curr_num)
+                dfs(i, path, sum+curr_num)
                 path.pop()
-                #next no. try
                 i = i+1
-        dfs(0, [], 0)
+        dfs(0,[],0)
         return result
-    
+        
