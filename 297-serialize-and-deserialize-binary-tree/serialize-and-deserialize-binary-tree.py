@@ -8,27 +8,31 @@
 class Codec:
 
         def serialize(self, root):
+            result = []
             def dfs(node):
-                if not node:
-                    return "#"
-                return str(node.val) + "," + dfs(node.left) + "," + dfs(node.right)
-                                                                
-            return dfs(root)
-
-        def deserialize(self, data):
-            values = iter(data.split(","))
-            def dfs():
-                val = next(values)
-                if val == "#":
+                if node is None:
+                    result.append("null")
+                    return 
+                result.append(str(node.val))
+                dfs(node.left)
+                dfs(node.right)
+            dfs(root)
+            return ",".join(result)
+        def deserialize(self,data):
+            values = data.split(",")
+            index = [0]
+            def build():
+                if values[index[0]] == "null":
+                    index[0] = index[0]+1
                     return None
-                node = TreeNode(int(val))
-                node.left = dfs()
-                node.right = dfs()
+                node = TreeNode(int(values[index[0]]))
+                index[0] = index[0] +1
+                node.left = build()
+                node.right = build()
                 return node
-            return dfs()
-
-                                                                                                                                                                                          
-                                                                                                                                                                                                        
+            return build()
+                
+                                                                                                                                 
                                                                                                                                                                                                                 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
