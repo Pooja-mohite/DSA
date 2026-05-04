@@ -2,6 +2,8 @@
 
 class Solution(object):
     def lowestCommonAncestor(self, root, p, q):
+        #Brute Force
+        '''
         p_path = []
         q_path = []
         self.findpath(root, p_path, p)
@@ -28,4 +30,13 @@ class Solution(object):
             return True
         path.pop()
         return False
+        '''
+        #optimized
+        while root:
+            if p.val < root.val and q.val< root.val:
+                root = root.left
+            elif p.val > root.val and q.val > root.val:
+                root= root.right
+            else:
+                return root
         
