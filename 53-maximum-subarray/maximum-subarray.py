@@ -1,30 +1,30 @@
 class Solution(object):
     def maxSubArray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        #brue force
-        """
-        n = len(nums)
-        maximumsum = nums[0] 
+        #burte force
+        '''
+        n=len(nums)
+        max_sum = nums[0]
         for i in range(n):
-            currentsum = 0
-            for j in range(i, n):
-                currentsum = currentsum + nums[j]
-                if currentsum > maximumsum:
-                    maximumsum = currentsum
-        return maximumsum
-        """
-        #Greedy
+            current_sum = 0
+            for j in range(i,n):
+                current_sum = current_sum + nums[j]
+                if current_sum > max_sum:
+                    max_sum = current_sum
+        return max_sum
+        '''
+        #optimized
         n = len(nums)
-        maximumsum = nums[0]
-        currentsum = 0
+        max_sum = nums[0]
+        current_sum = 0
         for i in range(n):
-            currentsum = max(nums[i], currentsum + nums[i])
-            if currentsum > maximumsum:
-                maximumsum = currentsum
-        return maximumsum
+            current_sum = max(nums[i], current_sum + nums[i])
+            if current_sum > max_sum:
+                max_sum = current_sum
+        return max_sum
+
+
+
+      
 
 
 
