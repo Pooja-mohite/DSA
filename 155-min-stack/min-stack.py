@@ -1,4 +1,6 @@
 class MinStack(object):
+    """
+    #  Brute Force
 
     def __init__(self):
         self.stack = []
@@ -24,6 +26,29 @@ class MinStack(object):
             if num < minimum:
                 minimum = num
         return minimum
+        """
+        # optimized
+    def __init__(self):
+        self.stack = []
+        self.minstack = []
+
+    def push(self, val):
+        self.stack.append(val)
+        if not self.minstack:
+            self.minstack.append(val)
+        else:
+            current_min = min(val, self.minstack[-1])
+            self.minstack.append(current_min)
+
+    def pop(self):
+        self.stack.pop()
+        self.minstack.pop()
+
+    def top(self):
+        return self.stack[-1]
+    def getMin(self):
+        return self.minstack[-1]
+
         
 
 
