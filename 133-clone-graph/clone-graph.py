@@ -11,32 +11,38 @@ class Solution(object):
         """
         if not node:
             return None
-
         def dfs(oldnode):
-            #create new node
             newnode = Node(oldnode.val)
-
-            #copy connections
-            for neighb in oldnode.neighbors:
-                newnode.neighbors.append(dfs(neighb))
+            for neighbor in oldnode.neighbors:
+                newnode.neighbors.append(dfs(neighbor))
             return newnode
-        return dfs(node) 
+        return dfs(node)
         """
-        #optimized
         visited = {}
-        if node is None:
+        if not node:
             return None
         def dfs(oldnode):
             if oldnode in visited:
                 return visited[oldnode]
             else:
-                new_node = Node(oldnode.val)
-                visited[oldnode]= new_node
-
+                newnode = Node(oldnode.val)
+                visited[oldnode] = newnode
                 for neighbor in oldnode.neighbors:
-                    new_node.neighbors.append(dfs(neighbor))
-                return new_node
+                    newnode.neighbors.append(dfs(neighbor))
+                return newnode
         return dfs(node)
+
+
+            
+
+
+
+
+
+
+       
+    
+        
 
                 
 
