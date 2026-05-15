@@ -1,29 +1,31 @@
 class Solution(object):
     def maxArea(self, height):
-        #brute force
-        """n = len(height)
-        max_water = 0
+        """
+        water = 0
+        n = len(height)
         for i in range(n):
             for j in range(i+1, n):
                 h = min(height[i], height[j])
                 width = j - i
                 area = h * width
-                max_water = max(max_water, area)
-        return max_water"""
-
-        # two pointers
-        start = 0
-        end = len(height)-1
-        max_water = 0
-        while start<end:
-            h = min(height[start], height[end])
-            width = end - start
+                water = max(water, area)
+        return water
+        """
+        water = 0
+        left = 0
+        right = len(height) - 1
+        while left<right:
+            h = min(height[left], height[right])
+            width = right - left
             area = h * width
-            max_water = max(max_water, area)
-            if height[start] < height[end]:
-                start = start + 1
+            water = max(area, water)
+            if height[left] < height[right]:
+                left = left + 1
             else:
-                end = end - 1
-        return max_water 
+                right= right - 1
+        return water
+
+            
+       
 
         
