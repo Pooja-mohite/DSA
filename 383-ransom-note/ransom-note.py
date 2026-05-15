@@ -1,6 +1,6 @@
 class Solution(object):
     def canConstruct(self, ransomNote, magazine):
-        
+        """
         character = list(magazine)
         n = len(character)
         for char in ransomNote:
@@ -12,6 +12,18 @@ class Solution(object):
                     break
             if found == False:
                 return False
+        return True
+        """
+        count = {}
+        for char in magazine:
+            count[char] = count.get(char, 0)+1
+        for char in ransomNote:
+            if char not in count:
+                return False
+            if count[char] == 0:
+                return False
+
+            count[char] = count[char] - 1
         return True
 
 
