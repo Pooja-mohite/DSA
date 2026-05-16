@@ -6,8 +6,6 @@
 
 class Solution(object):
     def hasCycle(self, head):
-        #brute force
-        """
         visited = set()
         current = head
         while current:
@@ -16,14 +14,5 @@ class Solution(object):
             visited.add(current)
             current = current.next
         return False
-        """
 
-        #fast and slow pointer
-        slow = head
-        fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-            if slow == fast:
-                return True
-        return False
+        
