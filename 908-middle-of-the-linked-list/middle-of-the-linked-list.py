@@ -5,6 +5,9 @@
 #         self.next = next
 class Solution(object):
     def middleNode(self, head):
+
+        '''
+        #brute force
         length = 0
         temp = head
         while temp:
@@ -15,5 +18,16 @@ class Solution(object):
         for i in range(middle):
             temp = temp.next
         return temp
+       '''
+        # slow and fast pointers
+        slow = head
+        fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
        
+    
+    
+        
         
