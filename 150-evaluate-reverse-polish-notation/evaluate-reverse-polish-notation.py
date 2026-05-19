@@ -7,7 +7,6 @@ class Solution(object):
             else:
                 b = stack.pop()
                 a = stack.pop()
-
                 if token == "+":
                     stack.append(a+b)
                 elif token == "-":
@@ -16,6 +15,6 @@ class Solution(object):
                     stack.append(a*b)
                 else:
                     stack.append(int(float(a) /b))
-        return stack[0]
-        
-        
+        return stack[0] 
+                
+                
