@@ -1,33 +1,29 @@
 class Solution(object):
     def maxSubArray(self, nums):
-        #burte force
         '''
-        n=len(nums)
-        max_sum = nums[0]
+        #brute force
+        n= len(nums)
+        maxsum = nums[0]
         for i in range(n):
-            current_sum = 0
-            for j in range(i,n):
-                current_sum = current_sum + nums[j]
-                if current_sum > max_sum:
-                    max_sum = current_sum
-        return max_sum
+            currsum = 0
+            for j in range(i, n):
+                currsum = currsum + nums[j]
+                if currsum > maxsum:
+                    maxsum = currsum
+        return maxsum
         '''
-        #optimized
         n = len(nums)
-        max_sum = nums[0]
-        current_sum = 0
+        maxsum = nums[0]
+        currsum = 0
         for i in range(n):
-            current_sum = max(nums[i], current_sum + nums[i])
-            if current_sum > max_sum:
-                max_sum = current_sum
-        return max_sum
+            currsum = max(nums[i], currsum + nums[i])
+            if currsum > maxsum:
+                maxsum = currsum
+        return maxsum
 
-
-
-      
-
-
-
+                
+        
+        
 
 
                 
