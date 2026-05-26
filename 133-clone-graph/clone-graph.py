@@ -8,30 +8,40 @@ class Node(object):
 
 class Solution(object):
     def cloneGraph(self, node):
+        # BRute force
         """
         if not node:
             return None
-        def dfs(oldnode):
-            newnode = Node(oldnode.val)
-            for neighbor in oldnode.neighbors:
+        def dfs(old_node):
+            newnode = Node(old_node.val)
+            for neighbor in old_node.neighbors:
                 newnode.neighbors.append(dfs(neighbor))
             return newnode
         return dfs(node)
         """
         visited = {}
-        if not node:
-            return None
-        def dfs(oldnode):
-            if oldnode in visited:
-                return visited[oldnode]
+        def dfs(old_node):
+            if not node:
+                return None
+            if old_node in visited:
+                return visited[old_node]
             else:
-                newnode = Node(oldnode.val)
-                visited[oldnode] = newnode
-                for neighbor in oldnode.neighbors:
+                newnode = Node(old_node.val)
+                visited[old_node] = newnode
+                for neighbor in old_node.neighbors:
                     newnode.neighbors.append(dfs(neighbor))
                 return newnode
         return dfs(node)
 
+
+
+
+
+
+
+
+       
+        
 
             
 
