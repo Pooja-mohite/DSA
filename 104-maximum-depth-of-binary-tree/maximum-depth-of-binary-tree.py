@@ -6,11 +6,20 @@
 #         self.right = right
 class Solution(object):
     def maxDepth(self, root):
-        if root is None:
+        if not root:
             return 0
-        left = self.maxDepth(root.left)
-        right = self.maxDepth(root.right)
-        return 1+ max(left, right)
-
+        queue = deque([root])
+        depth = 0
+        while queue:
+            size = len(queue)
+            for i in range(size):
+                node = queue.popleft()
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            depth = depth + 1
+        return depth
+       
         
         
