@@ -6,6 +6,8 @@
 #         self.right = right
 class Solution(object):
     def maxDepth(self, root):
+        '''
+        # bfs
         if not root:
             return 0
         queue = deque([root])
@@ -20,6 +22,16 @@ class Solution(object):
                     queue.append(node.right)
             depth = depth + 1
         return depth
+        '''
+        # dfs
+
+        if not root:
+            return 0
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+
+        return 1 + max(left, right)
+        
        
         
         
