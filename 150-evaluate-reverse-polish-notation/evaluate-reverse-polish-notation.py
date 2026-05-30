@@ -14,7 +14,9 @@ class Solution(object):
                 elif token == "*":
                     stack.append(a*b)
                 else:
-                    stack.append(int(float(a) /b))
-        return stack[0] 
-                
-                
+                    stack.append(int(float (a) /b))
+        return stack[0]
+
+
+
+        
