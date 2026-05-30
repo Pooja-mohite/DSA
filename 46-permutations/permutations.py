@@ -1,10 +1,9 @@
 class Solution(object):
     def permute(self, nums):
-        #brute force
         n = len(nums)
-        result= []
+        result = []
         current = []
-        visited = [False]*n
+        visited = [False] * n
         def backtrack():
             if len(current) == n:
                 result.append(current[:])
@@ -20,5 +19,10 @@ class Solution(object):
         backtrack()
         return result
 
+
+
+
+
+        
         
         
