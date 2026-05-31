@@ -6,6 +6,8 @@
 #         self.right = right
 class Solution(object):
     def kthSmallest(self, root, k):
+        '''
+        #brute force
         result = []
         def inorder(node):
             if not node:
@@ -15,5 +17,21 @@ class Solution(object):
             inorder(node.right)
         inorder(root)
         return  result[k-1] 
+        '''
+        # optimized
+        self.count = 0
+        self.answer = 0
+        def inorder(node):
+            if not node:
+                return None
+            inorder(node.left)
+            self.count = self.count + 1
+            if self.count == k:
+                self.answer = node.val
+                return
+            inorder(node.right)
+        inorder(root)
+        return self.answer  
+
             
 
