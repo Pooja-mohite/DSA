@@ -12,12 +12,13 @@ class Codec:
             def dfs(node):
                 if node is None:
                     result.append("null")
-                    return 
+                    return
                 result.append(str(node.val))
                 dfs(node.left)
                 dfs(node.right)
             dfs(root)
-            return ",".join(result)
+            return ",".join(result)    
+           
         def deserialize(self,data):
             values = data.split(",")
             index = [0]
@@ -26,11 +27,12 @@ class Codec:
                     index[0] = index[0]+1
                     return None
                 node = TreeNode(int(values[index[0]]))
-                index[0] = index[0] +1
+                index[0] = index[0] + 1
                 node.left = build()
                 node.right = build()
                 return node
             return build()
+            
                 
                                                                                                                                  
                                                                                                                                                                                                                 
