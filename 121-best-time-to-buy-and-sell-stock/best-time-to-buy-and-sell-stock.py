@@ -1,31 +1,27 @@
 class Solution(object):
     def maxProfit(self, prices):
-        #  brute force
         '''
-        n = len(prices)
-        maxprofit = 0
-        for i in range(n):
-            for j in range(i+1, n):
-                profit = prices[j] - prices[i]
-                maxprofit = max(maxprofit, profit)
-        return maxprofit
+        max_profit = 0
+        for i in range(len(prices)):
+            for j in range(i+1, len(prices)):
+                profit = prices[j]- prices[i]
+                max_profit = max(max_profit, profit)
+        return max_profit
         '''
-        maxprofit = 0
-        minprice = float("inf")
-        for i in prices:
-            if i < minprice:
-                minprice = i
-            profit = i - minprice
-            maxprofit = max(maxprofit, profit)
-        return maxprofit
+
+        left = 0
+        right = 1
+        max_profit = 0
+        while right < len(prices):
+            if prices[left] < prices[right]:
+                profit = prices[right]- prices[left]
+                if profit > max_profit:
+                    max_profit = profit
+            else:
+                left = right
+            right = right+1
+        return max_profit
 
 
-
-
-
-
-
-
-
-
+        
        
