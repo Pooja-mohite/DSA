@@ -15,12 +15,21 @@ class Solution(object):
                 return True
         return False
         '''
+        """
         #hashset
         hashset = set()
         for element in nums:
             if element in hashset:
                 return True
             hashset.add(element)
+        return False
+        """
+        # hashmap
+        hashmap = {}
+        for element in nums:
+            if element in hashmap:
+                return True
+            hashmap[element] = "added"
         return False
         
 
