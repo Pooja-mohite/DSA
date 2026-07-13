@@ -12,7 +12,7 @@ class Solution(object):
 
         #two pointer
 
-        n = len(nums)
+        """n = len(nums)
         left = 0
         right = n - 1
         ans = [0] * n
@@ -31,11 +31,9 @@ class Solution(object):
                 right = right - 1
 
             index = index - 1
-        return ans
+        return ans"""
 
-        """n = len(nums)
-        left = 0
-        right = n-1
+        n = len(nums)
         neg = []
         pos = []
         for num in nums:
@@ -51,7 +49,34 @@ class Solution(object):
         if len(pos) ==0:
             square = [x *x for x in neg]
             square.reverse()
-            return square"""
+            return square
+        
+        # both neg and pos exists
+        neg = [x *x for x in neg]
+        neg.reverse()
+        pos = [x *x for x in pos]
+        p = len(neg)
+        q = len(pos)
+        square = []
+        i = 0
+        j = 0
+        while i<p and j<q:
+            if neg[i] <= pos[j]:
+                square.append(neg[i])
+                i = i+1
+            else:
+                square.append(pos[j])
+                j = j+1
+        while  i< p:
+                square.append(neg[i])
+                i = i+1
+        while j<q:
+                square.append(pos[j])
+                j = j+1
+        return square
+            
+
+        
                 
 
 
