@@ -1,3 +1,4 @@
+import math
 class Solution(object):
     def sortedSquares(self, nums):
         #brute force
@@ -33,7 +34,7 @@ class Solution(object):
             index = index - 1
         return ans"""
 
-        n = len(nums)
+        """n = len(nums)
         neg = []
         pos = []
         for num in nums:
@@ -73,8 +74,31 @@ class Solution(object):
         while j<q:
                 square.append(pos[j])
                 j = j+1
-        return square
+        return square"""
             
+        n = len(nums)
+        for i in range(n):
+            nums[i] = nums[i] * nums[i]
+        gap = (n//2) + (n%2)
+        while gap > 0:
+            i = 0
+            j = gap
+            while j < n:
+                if nums[i] > nums[j]:
+                    nums[i],nums[j] = nums[j],nums[i]
+                i = i+1
+                j = j+1
+        
+            if gap == 1:
+                gap = 0
+            else:
+                gap = (gap//2) + (gap%2)
+        return nums
+
+             
+            
+            
+        
 
         
                 
