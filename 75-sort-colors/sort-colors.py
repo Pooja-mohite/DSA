@@ -18,7 +18,7 @@ class Solution(object):
         nums.extend(two)
         return nums"""
 
-        n = len(nums)
+        """n = len(nums)
         zero = 0
         one = 0
         two = 0
@@ -38,7 +38,27 @@ class Solution(object):
             index = index+1
         for i in range(two):
             nums[index] = 2
-            index = index+1    
+            index = index+1 """
+
+        n = len(nums)
+        low =0
+        mid = 0
+        high = n-1
+        while mid <= high:
+            
+            if nums[mid] == 0:
+                nums[low], nums[mid] = nums[mid], nums[low]
+                low = low+1
+                mid = mid+1
+            elif nums[mid] == 1:
+                mid = mid+1
+            else:
+                nums[mid], nums[high] = nums[high],nums[mid]
+                high = high-1
+        
+            
+            
+
             
 
             
