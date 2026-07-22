@@ -1,33 +1,16 @@
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
-        #  brute Force
-        '''
         n = len(s)
-        length = 0 
+        max_len = 0
         for i in range(n):
-            seen = set()
-            for j in range(i, n):
-                if s[j] in seen:
+            sset = set()
+            for j in range(i,n):
+                if s[j] not in sset:
+                    sset.add(s[j])
+                else:
                     break
-                seen.add(s[j])
-                length = max(length, j-i +1)
-        return length
-        '''
-        #sliding windoe
+                leng = j-i+1
+                max_len= max(max_len,leng)
+                
+        return max_len
 
-        i = 0
-        length = 0
-        seen = set()
-        for j in range(len(s)):
-            while s[j] in seen:
-                seen.remove(s[i])
-                i = i+1
-            seen.add(s[j])
-            length = max(length, j-i+1)
-        return length
-
-
-
-
-        
-        
