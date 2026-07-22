@@ -14,7 +14,7 @@ class Solution(object):
                 
         return max_len"""
 
-        n = len(s)
+        """n = len(s)
         max_len = 0
         for i in range(n):
             hashmap = {}
@@ -26,6 +26,28 @@ class Solution(object):
                 else:
                     break
                     
-        return max_len 
+        return max_len"""
+
+        l = 0
+        r = 0
+        n = len(s)
+        max_len = 0
+        hashmap={}
+        while r < n:
+            if s[r] not in hashmap:
+                hashmap[s[r]] = 1
+            else:
+                hashmap[s[r]] = hashmap[s[r]] + 1
+            while hashmap[s[r]] > 1:
+                hashmap[s[l]] = hashmap[s[l]] - 1
+                if hashmap[s[l]] == 0:
+                    del hashmap[s[l]]
+                l = l+1
+            leng = r - l + 1
+            max_len = max(leng, max_len)
+            r = r+1
+        return max_len
+
+             
 
 
