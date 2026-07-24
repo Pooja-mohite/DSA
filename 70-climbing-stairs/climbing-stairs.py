@@ -1,26 +1,22 @@
 class Solution(object):
     def climbStairs(self, n):
-        #brute force
-        """
-        if n == 0 or n == 1:
-            return 1
+        #climbStairs(n-1)+climbStairs(n-2)
+        #if n =2 then return n
+        #if dp != -1, then dp[n]
 
-        return self.climbStairs(n-1) + self.climbStairs(n-2)
-        """
 
-        #DP
-        #dp array
-        dp = [0] * (n+1)
-
-        dp[0] = 1
-        dp[1] = 1
-
-        for i in range(2, n+1):
-            dp[i] = dp[i-1] + dp[i-2]
-
+        dp = [-1]*(n+1)
+        return self.solve(n,dp)
+    def solve(self,n,dp):
+        if dp[n]!= -1:
+            return dp[n]
+    
+        if n <=2:
+            return n
+        dp[n]=self.solve(n-1,dp)+self.solve(n-2,dp)
         return dp[n]
 
 
-        
-        
+
+
         
