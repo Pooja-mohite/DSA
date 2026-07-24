@@ -19,12 +19,12 @@ class Solution(object):
 # want to reach nth stairs
 # 1 step = (n-1)stairs
 # 2 step = (n-2)stairs
-# 
-# 0 stair = 1 way
-# 1 stair = another way
+# 0 stair = 1 way = already reached
+# 1 stair = another way = 1 possible way
 #add two ways
-        dp = [-1] * (n+1)
-        dp[0] = 1
+        if n== 0 or n== 1:
+            return n
+        dp = [1]*(n+1)
         dp[1]= 1
         for i in range(2, n+1):
             dp[i] = dp[i-1]+dp[i-2]
