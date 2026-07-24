@@ -5,7 +5,7 @@ class Solution(object):
         #if dp != -1, then dp[n]
 
 
-        dp = [-1]*(n+1)
+        """dp = [-1]*(n+1)
         return self.solve(n,dp)
     def solve(self,n,dp):
         if dp[n]!= -1:
@@ -14,7 +14,24 @@ class Solution(object):
         if n <=2:
             return n
         dp[n]=self.solve(n-1,dp)+self.solve(n-2,dp)
+        return dp[n]"""
+
+# want to reach nth stairs
+# 1 step = (n-1)stairs
+# 2 step = (n-2)stairs
+# 
+# 0 stair = 1 way
+# 1 stair = another way
+#add two ways
+        dp = [-1] * (n+1)
+        dp[0] = 1
+        dp[1]= 1
+        for i in range(2, n+1):
+            dp[i] = dp[i-1]+dp[i-2]
         return dp[n]
+
+
+
 
 
 
