@@ -6,13 +6,22 @@
 
 class Solution(object):
     def hasCycle(self, head):
-        visited = set()
-        current = head
-        while current:
-            if current in visited:
+        # initialize current node as head, head means starting node
+        # create hashset, check if current node in set or not 
+        # if current node exist then yes cycle xists then return true else add in set
+        # and update the current node as next node
+
+        nodeset = set()
+        currentnode = head
+        if currentnode < 0:
+            return False
+        while currentnode:
+            if currentnode in nodeset:
                 return True
-            visited.add(current)
-            current = current.next
+            else:
+                nodeset.add(currentnode)
+            currentnode = currentnode.next
         return False
+        
 
         
