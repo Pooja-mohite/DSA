@@ -10,7 +10,7 @@ class Solution(object):
         # create hashset, check if current node in set or not 
         # if current node exist then yes cycle xists then return true else add in set
         # and update the current node as next node
-
+        """
         nodeset = set()
         currentnode = head
         if currentnode < 0:
@@ -21,7 +21,22 @@ class Solution(object):
             else:
                 nodeset.add(currentnode)
             currentnode = currentnode.next
+        return False"""
+
+        # fast and slow pointer approach
+        # starts from head, slow takes 1 step and fast takes 2 steps
+        # check if slow and fast at same place, then cycle exists
+        slow = head
+        fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
         return False
+
+
+
         
 
         
