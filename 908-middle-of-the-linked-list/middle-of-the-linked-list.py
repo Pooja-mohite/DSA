@@ -5,27 +5,28 @@
 #         self.next = next
 class Solution(object):
     def middleNode(self, head):
+        # traverse full linked list, count all nodes
+        # take one temp and traverse linked list and count nodes
+        # find the midlle,count // 2 
+        # then traverse to middle node 
 
-        '''
-        #brute force
-        length = 0
-        temp = head
+        temp= head
+        count = 0
         while temp:
-            length = length + 1
+            count = count + 1
             temp = temp.next
-        middle = length // 2
+        middle = count // 2
         temp = head
         for i in range(middle):
             temp = temp.next
         return temp
-       '''
-        # slow and fast pointers
-        slow = head
-        fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-        return slow
+        
+        
+
+
+
+
+
        
     
     
