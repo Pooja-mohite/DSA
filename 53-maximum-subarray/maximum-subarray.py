@@ -1,7 +1,6 @@
 class Solution(object):
     def maxSubArray(self, nums):
-        '''
-        #brute force
+        """
         n= len(nums)
         maxsum = nums[0]
         for i in range(n):
@@ -10,17 +9,25 @@ class Solution(object):
                 currsum = currsum + nums[j]
                 if currsum > maxsum:
                     maxsum = currsum
-        return maxsum
-        '''
-        n = len(nums)
-        maxsum = nums[0]
-        currsum = 0
-        for i in range(n):
-            currsum = max(nums[i], currsum + nums[i])
-            if currsum > maxsum:
-                maxsum = currsum
-        return maxsum
+        return maxsum"""
 
+        # kadane's pattern
+        # at first index we got bestending
+        # traverse array, take addition( prev answer with currennt )and comapre with (current)compare and return max
+
+        bestending = nums[0]
+        ans = nums[0]
+        n = len(nums)
+        for i in range(1,n):
+            max1 = bestending + nums[i]
+            max2 = nums[i]
+            bestending = max(max1, max2)
+            ans = max(ans,bestending)
+        return ans
+
+
+        
+       
                 
         
         
