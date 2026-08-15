@@ -18,10 +18,11 @@ class Solution(object):
         left = 0
         ssum = sum(nums)
         for i in range(n):
+            if i > 0:
+                left = left + nums[i-1]
             right = ssum - nums[i] - left
             if left == right:
                 return i
-            left = left + nums[i]
         return -1
         
                 
