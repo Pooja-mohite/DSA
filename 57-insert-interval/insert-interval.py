@@ -1,40 +1,28 @@
 class Solution(object):
     def insert(self, intervals, newInterval):
-        #  brute force
-        '''
+        # add new interval in old interval and sort it and then check all the intervals, if they overlap then need to merge it and return the interval
+
         intervals.append(newInterval)
-        intervals.sort(key = lambda x : x[0])
-        result = []
-        result.append(intervals[0])
-        for i in range(1, len(intervals)):
-            current = intervals[i]
-            prev = result[-1]
-            if current[0] > prev[1]:
-                result.append(current)
-            else:
-               prev[0] =  min(current[0], prev[0])
-               prev[1] = max(current[1], prev[1])
-        return result
-        '''
+        intervals.sort()
+        res = []
         n = len(intervals)
-        result = []
-        i = 0
-        while i < n and intervals[i][1] < newInterval[0]:
-            result.append(intervals[i])
-            i = i + 1
-        while i < n and intervals[i][0] <= newInterval[1]:
-            newInterval[0]= min(intervals[i][0], newInterval[0])
-            newInterval[1] = max(intervals[i][1], newInterval[1])
-            i = i + 1
-        result.append(newInterval)
-        while i < n:
-            result.append(intervals[i])
-            i = i + 1
-        return result 
+        visited = [False]*n
+        for i in range(n):
+            if visited[i]:
+                continue
+            start = intervals[i][0]
+            end = intervals[i][1]
+            for j in range(i+1,n):
+                if visited[j]:
+                    continue
+                if not (intervals[j][1] < start or intervals[j][0] > end):
+                    start = min(start, intervals[j][0])
+                    end = max(end, intervals[j][1])
+                    visited[j] = True
+            res.append([start, end])
+        return res
 
-
-
-
+       
 
 
         
